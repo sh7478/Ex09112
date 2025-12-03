@@ -36,47 +36,77 @@ public class MainActivity extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         int id = item.getItemId();
-        if(id == R.id.menuAdd)
-        {
-            sumNums();
-        }
-        else if(id == R.id.menuSub)
-        {
-            subNums();
-        }
-        else if(id == R.id.menuMul)
-        {
-            mulNums();
-        }
-        else if(id == R.id.menuDiv)
-        {
-            divNums();
-        }
-        else if(id == R.id.menuClr)
+        if(id == R.id.menuClr)
         {
             clearAll();
         }
-        return super.onOptionsItemSelected(item);
-    }
-
-    private void sumNums() {
-        if(!etNum1.getText().equals(""))
+        else if(!etNum1.getText().toString().equals(""))
         {
-            if(!etNum2.getText().equals(""))
+            if(!etNum2.getText().toString().equals(""))
             {
-                long num1 = Integer.parseInt(etNum1.getText().toString());
-                long num2 = Integer.parseInt(etNum2.getText().toString());
-                solution.setText("" + (num1 + num2));
+                if(id == R.id.menuAdd)
+                {
+                    sumNums();
+                }
+                else if(id == R.id.menuSub)
+                {
+                    subNums();
+                }
+                else if(id == R.id.menuMul)
+                {
+                    mulNums();
+                }
+                else if(id == R.id.menuDiv)
+                {
+                    divNums();
+                }
             }
             else
             {
-                //TODO: add an error output to solution
+                solution.setText("you have to put two numbers before solving");
             }
         }
         else
         {
-            //TODO: add an error output to solution
+            solution.setText("you have to put two numbers before solving");
         }
+        return super.onOptionsItemSelected(item);
+    }
+
+    private void clearAll() {
+        solution.setText("");
+        etNum1.setText("");
+        etNum2.setText("");
+    }
+
+    private void divNums() {
+        double num1 = Double.parseDouble(etNum1.getText().toString());
+        double num2 = Double.parseDouble(etNum2.getText().toString());
+        if(num2 == 0)
+        {
+            solution.setText("Can't divide by zero");
+        }
+        else {
+            solution.setText("" + (num1 / num2));
+        }
+    }
+
+    private void mulNums() {
+        double num1 = Double.parseDouble(etNum1.getText().toString());
+        double num2 = Double.parseDouble(etNum2.getText().toString());
+        solution.setText("" + (num1 * num2));
+    }
+
+    private void subNums() {
+        double num1 = Double.parseDouble(etNum1.getText().toString());
+        double num2 = Double.parseDouble(etNum2.getText().toString());
+        solution.setText("" + (num1 - num2));
+    }
+
+    private void sumNums() {
+        double num1 = Double.parseDouble(etNum1.getText().toString());
+        double num2 = Double.parseDouble(etNum2.getText().toString());
+        solution.setText("" + (num1 + num2));
 
     }
 }

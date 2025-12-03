@@ -22,46 +22,56 @@
         <Space
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="1" />
+            android:layout_weight="15" />
 
-        <EditText
-            android:id="@+id/etNum1"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="1"
-            android:ems="10"
-            android:hint="Enter Number:"
-            android:inputType="numberSigned|numberDecimal" />
+            android:layout_weight="15"
+            android:orientation="horizontal">
+
+            <EditText
+                android:id="@+id/etNum1"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="45"
+                android:ems="10"
+                android:hint="Enter Number:"
+                android:inputType="numberSigned|numberDecimal" />
+
+            <Space
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="10" />
+
+            <EditText
+                android:id="@+id/etNum2"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="45"
+                android:ems="10"
+                android:hint="Enter number:"
+                android:inputType="numberSigned|numberDecimal" />
+        </LinearLayout>
 
         <Space
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="1" />
-
-        <EditText
-            android:id="@+id/etNum2"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1"
-            android:ems="10"
-            android:hint="Enter number:"
-            android:inputType="numberSigned|numberDecimal" />
-
-        <Space
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1" />
+            android:layout_weight="5" />
 
         <TextView
             android:id="@+id/solution"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="1" />
+            android:layout_weight="15"
+            android:gravity="center"
+            android:text="this is a text"
+            android:textSize="20sp" />
 
         <Space
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="1" />
+            android:layout_weight="50" />
     </LinearLayout>
 
     <Space
