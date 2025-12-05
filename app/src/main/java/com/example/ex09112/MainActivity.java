@@ -5,7 +5,8 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.EditText;
 import android.widget.TextView;
-
+import java.text.DecimalFormat;
+import java.text.NumberFormat;
 import androidx.activity.EdgeToEdge;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -94,19 +95,35 @@ public class MainActivity extends AppCompatActivity {
     private void mulNums() {
         double num1 = Double.parseDouble(etNum1.getText().toString());
         double num2 = Double.parseDouble(etNum2.getText().toString());
-        solution.setText("" + (num1 * num2));
+        solution.setText(formatDecimal((num2*num1)));
+    }
+
+    public static String formatDecimal(double number) {
+        DecimalFormat simpleFormat = new DecimalFormat("0.####");
+        String formattedSimple = simpleFormat.format(number).replaceAll("[^0-9]", "");
+        if (formattedSimple.length() <= 5) {
+            NumberFormat standardFormat = NumberFormat.getInstance();
+            standardFormat.setMaximumFractionDigits(4);
+            standardFormat.setGroupingUsed(false);
+            return standardFormat.format(number);
+        } else {
+            DecimalFormat scientificFormat = new DecimalFormat("0.00E0");
+            String result = scientificFormat.format(number);
+            return result.replace("E", "e");
+        }
     }
 
     private void subNums() {
         double num1 = Double.parseDouble(etNum1.getText().toString());
         double num2 = Double.parseDouble(etNum2.getText().toString());
+
         solution.setText("" + (num1 - num2));
     }
 
     private void sumNums() {
         double num1 = Double.parseDouble(etNum1.getText().toString());
         double num2 = Double.parseDouble(etNum2.getText().toString());
-        solution.setText("" + (num1 + num2));
+        solution.setText(formatDecimal(num1 + num2));
 
     }
 }
