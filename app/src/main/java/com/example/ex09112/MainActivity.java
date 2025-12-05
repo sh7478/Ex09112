@@ -88,7 +88,7 @@ public class MainActivity extends AppCompatActivity {
             solution.setText("Can't divide by zero");
         }
         else {
-            solution.setText("" + (num1 / num2));
+            solution.setText(formatDecimal(num1 / num2));
         }
     }
 
@@ -117,7 +117,7 @@ public class MainActivity extends AppCompatActivity {
         double num1 = Double.parseDouble(etNum1.getText().toString());
         double num2 = Double.parseDouble(etNum2.getText().toString());
 
-        solution.setText("" + (num1 - num2));
+        solution.setText(formatDecimal(num1 - num2));
     }
 
     private void sumNums() {
