@@ -33,6 +33,15 @@ public class MainActivity extends AppCompatActivity {
         getMenuInflater().inflate(R.menu.main,menu);
         return super.onCreateOptionsMenu(menu);
     }
+    public static Double tryParseDecimal(String str) {
+        if (str == null || str.isEmpty()) {
+                return null;
+            }
+            if (str.matches("[+-]?(\\d+(\\.\\d*)?|\\.\\d+)")) {
+                return Double.parseDouble(str);
+            }
+            return null;
+        }
 
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
@@ -41,30 +50,23 @@ public class MainActivity extends AppCompatActivity {
         {
             clearAll();
         }
-        else if(!etNum1.getText().toString().equals(""))
+        else if(tryParseDecimal(etNum1.getText().toString()) != null && tryParseDecimal(etNum2.getText().toString()) != null)
         {
-            if(!etNum2.getText().toString().equals(""))
+            if(id == R.id.menuAdd)
             {
-                if(id == R.id.menuAdd)
-                {
-                    sumNums();
-                }
-                else if(id == R.id.menuSub)
-                {
-                    subNums();
-                }
-                else if(id == R.id.menuMul)
-                {
-                    mulNums();
-                }
-                else if(id == R.id.menuDiv)
-                {
-                    divNums();
-                }
+                sumNums();
             }
-            else
+            else if(id == R.id.menuSub)
             {
-                solution.setText("you have to put two numbers before solving");
+                subNums();
+            }
+            else if(id == R.id.menuMul)
+            {
+                mulNums();
+            }
+            else if(id == R.id.menuDiv)
+            {
+                divNums();
             }
         }
         else
